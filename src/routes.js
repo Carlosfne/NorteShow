@@ -11,6 +11,7 @@ import Informacoes from './pages/Informacoes';
 import Duvidas from './pages/Duvidas';
 import Contato from './pages/Contato';
 
+
 const Routes = createAppContainer(
   createStackNavigator({
     Main:{
@@ -40,7 +41,7 @@ const Routes = createAppContainer(
     AgrishowDigital:{
       screen: AgrishowDigital,
       navigationOptions:{
-        title: 'Agrishow Digital'
+        title: 'Norte Show Digital'
       }
     },
     ComoChegar:{
@@ -72,7 +73,7 @@ const Routes = createAppContainer(
       headerTintColor: '#fff',
       headerBackTitleVisible: false,
       headerStyle: {
-        backgroundColor: '#27ae60'
+        backgroundColor: '#317b79'
       }
     },
   })

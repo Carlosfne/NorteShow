@@ -60,88 +60,117 @@ function Main({navigation }) {
 
   return (
   <>
-    {/* <MapView onRegionChangeComplete={handleRegionChange} initialRegion={currentRegion} style={ styles.map } >
-      {devs.map(dev =>(
-        <Marker 
-          key={dev._id}
-          coordinate={{ 
-            longitude: dev.location.coordinates[0],
-            latitude: dev.location.coordinates[1],
-           }} >
-        <Image style={styles.avatar} source={{ uri: dev.avatar_url }} />
-        <Callout onPress={() =>{
-          navigation.navigate('Profile', { github_username: dev.github_username })
-        }}>
-          <View style={styles.callout}>
-            <Text style={styles.devName}>{dev.name}</Text>
-            <Text style={styles.devBio}>{dev.bio}</Text>
-            <Text style={styles.devTechs}>{dev.techs.join(', ')}</Text>
-          </View>
-        </Callout>
-      </Marker>
-      ))}
-    </MapView> */}
     <View style={ styles.map }>
-      <Image style={styles.image} source={require('../../assets/logo_norteshow.png')} />
+      <Image style={styles.image} source={require('../../assets/logo_data.png')} />
     </View>
     <View style={styles.searchForm}>
-        {/* <TextInput 
-          style={styles.searchInput}
-          placeholder='Buscar caminhões por placa...'
-          placeholderTextColor='#999'
-          autoCapitalize='words'
-          autoCorrect={false}
-          value={techs}
-          onChangeText={setTechs}
-          // onChangeText={text => setTechs(text)}
-        /> */}
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Atracoes')
         }} style={styles.loadButton}>
-          <MaterialIcons name="date-range" size={30} color="#fff"/>        
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_programacao.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Expositores')
         }} style={styles.loadButton}>
-          <MaterialIcons name="people" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_expositores.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Planta')
         }} style={styles.loadButton}>
-          <MaterialIcons name="map" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_mapa.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('AgrishowDigital')
         }} style={styles.loadButton}>
-          <MaterialIcons name="view-agenda" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_programacao.png')}
+          />
         </TouchableOpacity>
     </View>
     <View style={styles.searchForm2}>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('ComoChegar')
         }} style={styles.loadButton}>
-          <MaterialIcons name="my-location" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_comochegar.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Informacoes')
         }} style={styles.loadButton}>
-          <MaterialIcons name="info" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_noticias.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Duvidas')
         }} style={styles.loadButton}>
-          <MaterialIcons name="contact-support" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_duvidas.png')}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Contato')
         }} style={styles.loadButton}>
-          <MaterialIcons name="email" size={30} color="#fff"/>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_contato.png')}
+          />
         </TouchableOpacity>
     </View>
     <View style={styles.searchForm3}>
         <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
-          <MaterialIcons name="star" size={30} color="#fff"/>
+        <Image
+            style={styles.button}
+            source={require('../../assets/btn_patrocinadores.png')}
+          />
         </TouchableOpacity>        
+    </View>
+
+    <View style={styles.footer}>
+      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+        <Image
+            style={styles.btn_footer}
+            source={require('../../assets/btn_footer_settings.png')}
+          />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+        <Image
+            style={styles.btn_footer}
+            source={require('../../assets/btn_footer_notifications.png')}
+          />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+        <Image
+            style={styles.btn_footer}
+            source={require('../../assets/btn_footer_baseline.png')}
+          />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+        <Image
+            style={styles.btn_footer}
+            source={require('../../assets/btn_footer_star.png')}
+          />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+        <Image
+            style={styles.btn_footer}
+            source={require('../../assets/btn_footer_contato.png')}
+          />
+      </TouchableOpacity>
     </View>
   </>
   )
@@ -150,6 +179,25 @@ function Main({navigation }) {
 const styles = StyleSheet.create({
   map: {
     flex: 1,
+  },
+  button :{
+    width:74,
+    height:74,
+  },
+  footer:{
+    backgroundColor: '#317b79',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    padding:15
+  },
+  btnfooter: {
+    flex:1,
+    alignItems:'center'
+  },
+  btn_footer:{
+    width:30,
+    height:30,
   },
   avatar: {
     width: 54,
@@ -208,7 +256,6 @@ const styles = StyleSheet.create({
   loadButton:{
     width: 70,
     height: 70,
-    backgroundColor: '#27ae60',
     borderRadius: 45,
     justifyContent: 'center',
     alignItems: 'center',
