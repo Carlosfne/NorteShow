@@ -1,16 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity } from 'react-native'
+import React, { Component, useState, useEffect } from 'react';
+import { 
+  StyleSheet, 
+  Image, 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  StatusBar
+
+} from 'react-native'
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
+// import Footer from '../components/footer'
 
 import api from '../services/api';
+
+const { width } = Dimensions.get('window');
+const height = width * 0.2;
+const images = [
+  {
+      source: require('../../assets/pat_embrapa.png'),      
+  },
+  {
+      source: require('../../assets/pat_inpasa.png'),
+  },
+  {
+      source: require('../../assets/pat_patria.png'),
+  },
+  {
+      source: require('../../assets/pat_sinop.png'),
+  },
+  {
+      source: require('../../assets/pat_aprosoja.png'),
+  },
+
+];
+class Carousel extends Component {
+  render() {
+      const { images } = this.props;
+      if (images && images.length) {
+          return (
+              <View style={styles.scrollContainer}>
+                  <ScrollView
+                      horizontal
+                      // pagingEnabled
+                      showsHorizontalScrollIndicator={true} >
+                      {images.map((image, i) => (
+                          <Image style={styles.imageSlide} source={image.source} key={i} />
+                      ))}
+                  </ScrollView>
+              </View>
+          );
+      }
+      console.log('Please provide images');
+      return null;
+  }
+}
 
 function Main({navigation }) {
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion ] = useState(null);
   const [techs, setTechs] = useState('');
-
+  
   useEffect(() =>{
     async function loadInitialPosition() {
       const { granted } = await requestPermissionsAsync();
@@ -63,6 +117,11 @@ function Main({navigation }) {
     <View style={ styles.map }>
       <Image style={styles.image} source={require('../../assets/logo_data.png')} />
     </View>
+
+    <View style={styles.container}>
+      <Carousel images={images}  />
+    </View>
+{/* col1 */}
     <View style={styles.searchForm}>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Atracoes')
@@ -71,6 +130,7 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_programacao.png')}
           />
+          <Text>Programação</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Expositores')
@@ -79,6 +139,7 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_expositores.png')}
           />
+          <Text>Expositores</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Planta')
@@ -87,17 +148,32 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_mapa.png')}
           />
+          <Text>Mapa</Text>
         </TouchableOpacity>
+        
+    </View>
+    {/* 2 col */}
+    <View style={styles.searchForm2}>
         <TouchableOpacity onPress={() =>{
           navigation.navigate('AgrishowDigital')
         }} style={styles.loadButton}>
           <Image
             style={styles.button}
-            source={require('../../assets/btn_programacao.png')}
+            source={require('../../assets/btn_noticias.png')}
           />
+          <Text>Noticias</Text>
         </TouchableOpacity>
-    </View>
-    <View style={styles.searchForm2}>
+       
+        <TouchableOpacity onPress={() =>{
+          navigation.navigate('Informacoes')
+        }} style={styles.loadButton}>
+          <Image
+            style={styles.button}
+            source={require('../../assets/btn_hotel.png')}
+          />
+          <Text>Hotel</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={() =>{
           navigation.navigate('ComoChegar')
         }} style={styles.loadButton}>
@@ -105,15 +181,20 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_comochegar.png')}
           />
+          <Text>Como Chegar</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() =>{
-          navigation.navigate('Informacoes')
-        }} style={styles.loadButton}>
-          <Image
+        
+    </View>
+    {/* 3 col */}
+    <View style={styles.searchForm3}>
+        <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
+        <Image
             style={styles.button}
-            source={require('../../assets/btn_noticias.png')}
+            source={require('../../assets/btn_patrocinadores.png')}
           />
-        </TouchableOpacity>
+          <Text>Patrocinadores</Text>
+        </TouchableOpacity> 
+
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Duvidas')
         }} style={styles.loadButton}>
@@ -121,7 +202,9 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_duvidas.png')}
           />
+          <Text>Dúvidas</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() =>{
           navigation.navigate('Contato')
         }} style={styles.loadButton}>
@@ -129,17 +212,10 @@ function Main({navigation }) {
             style={styles.button}
             source={require('../../assets/btn_contato.png')}
           />
-        </TouchableOpacity>
+          <Text>Contato</Text>
+        </TouchableOpacity>       
     </View>
-    <View style={styles.searchForm3}>
-        <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
-        <Image
-            style={styles.button}
-            source={require('../../assets/btn_patrocinadores.png')}
-          />
-        </TouchableOpacity>        
-    </View>
-
+    {/* footer */}
     <View style={styles.footer}>
       <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
         <Image
@@ -157,6 +233,9 @@ function Main({navigation }) {
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_baseline.png')}
+            onPress={() =>{
+              navigation.navigate('Main')
+            }}
           />
       </TouchableOpacity>
       <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
@@ -180,9 +259,25 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'#d1e1e0',
+    marginBottom:5
+    // paddingTop: StatusBar.currentHeight,
+  },
+  scrollContainer: {
+    height,
+  },
+  imageSlide: {
+    width:75,
+    marginLeft:20,
+    height,
+  },
   button :{
-    width:74,
-    height:74,
+    width:80,
+    height:80,
   },
   footer:{
     backgroundColor: '#317b79',
@@ -254,12 +349,15 @@ const styles = StyleSheet.create({
 
   },
   loadButton:{
-    width: 70,
-    height: 70,
-    borderRadius: 45,
+    width: 85,
+    height: 85,
+    borderRadius:45,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 15,
+    marginLeft:15,
+    marginTop:5,
+    marginBottom:20,
+    marginRight:20,
   },
 })
 
