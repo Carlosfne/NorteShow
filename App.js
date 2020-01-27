@@ -1,17 +1,7 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Image, StyleSheet, Dimensions, StatusBar } from 'react-native';
+import React from 'react';
+import { StyleSheet, StatusBar } from 'react-native';
 
 import Routes from './src/routes'
-
-class Carousel extends Component {
-  render() {      
-          return (
-              <View >
-                <Text>Carlos</Text>
-              </View>
-          );
-      }
-}
 
 export default function App() {
   return (
