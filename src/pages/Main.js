@@ -15,6 +15,7 @@ import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
 // import Footer from '../components/footer'
+import Menu from '../components/menu'
 
 import api from '../services/api';
 

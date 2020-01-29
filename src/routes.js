@@ -10,6 +10,7 @@ import ComoChegar from './pages/ComoChegar';
 import Informacoes from './pages/Informacoes';
 import Duvidas from './pages/Duvidas';
 import Contato from './pages/Contato';
+import Menu from './components/menu'
 
 
 const Routes = createAppContainer(
@@ -53,7 +54,7 @@ const Routes = createAppContainer(
     Informacoes:{
       screen: Informacoes,
       navigationOptions:{
-        title: 'Informações'
+        title: 'Hotel'
       }
     },
     Duvidas:{
