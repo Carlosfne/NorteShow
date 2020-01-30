@@ -19,7 +19,7 @@ class Footer extends Component {
           />
       </TouchableOpacity>
       <TouchableOpacity onPress={() =>{
-              navigation.navigate('')
+              navigation.navigate('Expositores')
             }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
@@ -48,7 +48,7 @@ function Atracoes() {
   return (
     <>
   <WebView style={{ flex:1 }} source={{ uri: 'https://www.norteshow.com.br//'}} />
-  <Footer />
+  {/* <Footer /> */}
   </>
   )
 }

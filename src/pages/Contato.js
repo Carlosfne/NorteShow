@@ -1,28 +1,80 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import {
+  StyleSheet,
+  Button,
+  View,
+  SafeAreaView,
+  Text,
+  Alert,
+  
+} from 'react-native';
+import { TextInput } from 'react-native-paper';
+import Constants from 'expo-constants';
 
-function Contato() {
+function Separator() {
+  return <View style={styles.separator} />;
+}
+
+export default function App() {
   return (
-    <>
-    <View />
-    <Text style={styles.title} >Entre em contato:</Text>
-    <Text style={styles.label} >Rua João Pedro Moreira de Carvalho, 6.540, CEP 78.551-150 - Sinop - MT</Text>
-    <Text style={styles.label} >coordenacao@norteshow.com.br</Text>
-    <Text style={styles.label} >Tel: 66. 3520.4100</Text>
-    
-    </>
-  )
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.title}>
+          Contatar com os organizadores do evento.
+        </Text>
+        <TextInput
+          label='Nome'
+          style={styles.txtinput}
+          placeholder='Nome'
+          onChangeText={(nome) => this.setState({nome})}          
+        />
+        <TextInput
+          label='E-mail'
+          style={styles.txtinput}
+          placeholder='E-mail'
+          onChangeText={(email) => this.setState({email})}
+        />
+        <TextInput
+          label='Mensagem'
+          style={styles.txtArea}
+          placeholder='Mensagem'
+          onChangeText={(mensagem) => this.setState({mensagem})}
+        />
+        <Button
+          title="Enviar"
+          onPress={() => Alert.alert('Email enviado com sucesso!')}
+        />
+      </View>
+      
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-  title:{
-    fontSize:24,
-    fontWeight:'bold'
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+    marginHorizontal: 16,
   },
-  label:{
-    fontSize:18,
+  title: {
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  txtinput: {
+    marginBottom:5,
+    backgroundColor:'transparent'
+  },
+  txtArea :{
+    backgroundColor:'transparent',
+    height:150
   }
-})
-
-export default Contato;
+});

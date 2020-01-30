@@ -15,7 +15,7 @@ class SideBar extends Component {
               <View style={[ styles.container, { backgroundColor: '#fff' } ]}>
                       <Text>
                           <Icon name="rocket" size={30} color="#900" />
-                          Conteúdo side bar
+                          Carlos Eduardo
                       </Text>
               </View>
               );
@@ -39,13 +39,36 @@ export default class App extends Component<{}> {
           name="bars" 
           style={{ marginTop:30}} 
           size={30} 
-          color="#000" />
-          <Text>Norte Show 2020</Text>
+          color="#000" ></Icon>
+          {/* <Text style={{fontSize:18}}>Norte Show 2020</Text> */}
+
+        <Container>
+        <Container style={{flexDirection: 'row'}}>
+          <Icon onPress={() => this.openDrawer()} name="bars" size={30} color="#fff" />
+        </Container>
+
+        </Container>
+
       </Drawer>
       
     );
   }
 }
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });

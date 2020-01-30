@@ -62,6 +62,7 @@ class Carousel extends Component {
 }
 
 function Main({navigation }) {
+  
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion ] = useState(null);
   const [techs, setTechs] = useState('');
@@ -218,34 +219,44 @@ function Main({navigation }) {
     </View>
     {/* footer */}
     <View style={styles.footer}>
-      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+      <TouchableOpacity onPress={() =>{
+          navigation.navigate('Settings')
+        }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_settings.png')}
           />
       </TouchableOpacity>
-      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+      <TouchableOpacity onPress={() =>{
+          navigation.navigate('Expositores')
+        }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_notifications.png')}
           />
       </TouchableOpacity>
-      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+      <TouchableOpacity onPress={() =>{
+          navigation.navigate('Main')
+        }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_baseline.png')}
             onPress={() =>{
-              navigation.navigate('Main')
+              navigation.navigate('../Main')
             }}
           />
       </TouchableOpacity>
-      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+      <TouchableOpacity onPress={() =>{
+          navigation.navigate('Patrocinadores')
+        }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_star.png')}
           />
       </TouchableOpacity>
-      <TouchableOpacity onPress={loadDevs} style={styles.btnfooter}>
+      <TouchableOpacity onPress={() =>{
+          navigation.navigate('Contato')
+        }} style={styles.btnfooter}>
         <Image
             style={styles.btn_footer}
             source={require('../../assets/btn_footer_contato.png')}
@@ -265,7 +276,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor:'#d1e1e0',
-    marginBottom:5
+    marginBottom:5,
+    marginTop:-30
     // paddingTop: StatusBar.currentHeight,
   },
   scrollContainer: {
@@ -273,7 +285,7 @@ const styles = StyleSheet.create({
   },
   imageSlide: {
     width:75,
-    marginLeft:20,
+    marginLeft:18,
     height,
   },
   button :{

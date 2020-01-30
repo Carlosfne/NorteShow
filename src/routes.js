@@ -10,6 +10,7 @@ import ComoChegar from './pages/ComoChegar';
 import Informacoes from './pages/Informacoes';
 import Duvidas from './pages/Duvidas';
 import Contato from './pages/Contato';
+import Settings from './pages/Settings'
 import Menu from './components/menu'
 
 
@@ -67,6 +68,12 @@ const Routes = createAppContainer(
       screen: Contato,
       navigationOptions:{
         title: 'Contato'
+      }
+    },
+    Settings:{
+      screen: Settings,
+      navigationOptions:{
+        title: 'Extra'
       }
     },
   }, {
