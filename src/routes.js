@@ -14,6 +14,9 @@ import Settings from './pages/Settings'
 import Menu from './components/menu'
 
 
+const SideMenu = require('react-native-side-menu');
+
+
 const Routes = createAppContainer(
   createStackNavigator({
     Main:{

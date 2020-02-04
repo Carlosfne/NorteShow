@@ -15,7 +15,9 @@ import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import { MaterialIcons } from '@expo/vector-icons';
 // import Footer from '../components/footer'
-import Menu from '../components/menu'
+import Basic from '../../Basic'
+import Menu from '../../Menu'
+
 
 import api from '../services/api';
 
@@ -66,7 +68,7 @@ function Main({navigation }) {
   const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion ] = useState(null);
   const [techs, setTechs] = useState('');
-  
+
   useEffect(() =>{
     async function loadInitialPosition() {
       const { granted } = await requestPermissionsAsync();
@@ -113,7 +115,7 @@ function Main({navigation }) {
   if(!currentRegion){
     return null;
   }
-
+  
   return (
   <>
     <View style={ styles.map }>
@@ -277,11 +279,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor:'#d1e1e0',
     marginBottom:5,
-    marginTop:-30
+    marginTop:10
     // paddingTop: StatusBar.currentHeight,
   },
   scrollContainer: {
     height,
+  },
+  image:{
+    width,
   },
   imageSlide: {
     width:75,
