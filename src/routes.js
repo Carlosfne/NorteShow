@@ -1,5 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { DrawerNavigator } from 'react-navigation';
 
 import Main from './pages/Main';
 import Atracoes from './pages/Atracoes';
@@ -10,11 +11,8 @@ import ComoChegar from './pages/ComoChegar';
 import Informacoes from './pages/Informacoes';
 import Duvidas from './pages/Duvidas';
 import Contato from './pages/Contato';
-import Settings from './pages/Settings'
-import Menu from './components/menu'
-
-
-const SideMenu = require('react-native-side-menu');
+import Settings from './pages/Settings';
+import Patrocinadores from './pages/Patrocinadores'
 
 
 const Routes = createAppContainer(
@@ -22,8 +20,8 @@ const Routes = createAppContainer(
     Main:{
       screen: Main,
       navigationOptions:{
-        title: 'Norte Show 2020'
-      }
+        title: 'Norte Show 2020',       
+      },
     },
     Atracoes:{
       screen: Atracoes,
@@ -46,7 +44,7 @@ const Routes = createAppContainer(
     AgrishowDigital:{
       screen: AgrishowDigital,
       navigationOptions:{
-        title: 'Norte Show Digital'
+        title: 'Noticias'
       }
     },
     ComoChegar:{
@@ -71,6 +69,12 @@ const Routes = createAppContainer(
       screen: Contato,
       navigationOptions:{
         title: 'Contato'
+      }
+    },
+    Patrocinadores:{
+      screen: Patrocinadores,
+      navigationOptions:{
+        title: 'Patrocinadores'
       }
     },
     Settings:{

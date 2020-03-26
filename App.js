@@ -4,6 +4,7 @@ import { View, Text, Image } from 'react-native';
 
 import Routes from './src/routes'
 import Basic from './Basic'
+import Home from './HomeScreen'
 
 
 export default class App extends Component {
@@ -31,6 +32,7 @@ export default class App extends Component {
           {/* <Basic /> */}
         <StatusBar barStyle='light-content' backgroundColor= '#7d47e0' />
         <Routes />
+        {/* <Home /> */}
       </>
     );
   }

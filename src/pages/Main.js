@@ -191,7 +191,9 @@ function Main({navigation }) {
     </View>
     {/* 3 col */}
     <View style={styles.searchForm3}>
-        <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
+        <TouchableOpacity onPress={() =>{
+          navigation.navigate('Patrocinadores')
+        }} style={styles.loadButton}>
         <Image
             style={styles.button}
             source={require('../../assets/btn_patrocinadores.png')}

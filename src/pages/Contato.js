@@ -36,7 +36,7 @@ export default function App() {
         />
         <TextInput
           label='Mensagem'
-          style={styles.txtArea}
+          style={styles.txtArea}          
           placeholder='Mensagem'
           onChangeText={(mensagem) => this.setState({mensagem})}
         />
